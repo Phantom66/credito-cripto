@@ -12,7 +12,7 @@
 	<artifactId>validacion-solicitud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>validacion-solicitud</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Servico que permite validar al cliente si tiene registro</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
