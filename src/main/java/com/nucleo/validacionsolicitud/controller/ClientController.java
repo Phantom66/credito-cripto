@@ -15,6 +15,7 @@ import com.nucleo.validacionsolicitud.model.Client;
 import com.nucleo.validacionsolicitud.model.Request;
 import com.nucleo.validacionsolicitud.model.RequestModel;
 import com.nucleo.validacionsolicitud.service.ClientServiceImpl;
+import com.nucleo.validacionsolicitud.service.RequestServiceImpl;
 
 
 
@@ -25,6 +26,9 @@ public class ClientController {
 
     @Autowired
     private ClientServiceImpl clientService;
+
+    @Autowired
+    private RequestServiceImpl requestServiceImpl;
 
     @GetMapping(value = "obtener-clientes")
     public List<Client> findAll(){
@@ -41,13 +45,13 @@ public class ClientController {
     @GetMapping(value = "obtener-solicitud")
     public Stream<Request> findAllRequest(){
         log.info("Obtener solicitud");
-        return clientService.find();
+        return requestServiceImpl.find();
     }
 
     @PostMapping(value = "obtener-solicitud-cliente")
     public Request findRequestByClient(@RequestBody RequestModel requestModel) throws JsonProcessingException{
         log.info("Obtener solicitud cliente {} ", requestModel.getDocument());
-        return clientService.findRequest(requestModel.getDocument());
+        return requestServiceImpl.findRequest(requestModel.getDocument());
     }
     
 }
