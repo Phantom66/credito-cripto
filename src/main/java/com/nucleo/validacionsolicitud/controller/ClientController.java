@@ -1,6 +1,7 @@
 package com.nucleo.validacionsolicitud.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.nucleo.validacionsolicitud.model.Client;
 import com.nucleo.validacionsolicitud.model.Request;
 import com.nucleo.validacionsolicitud.model.RequestModel;
+import com.nucleo.validacionsolicitud.model.StatusCredit;
+import com.nucleo.validacionsolicitud.model.TypeStatusCredit;
 import com.nucleo.validacionsolicitud.service.ClientServiceImpl;
 import com.nucleo.validacionsolicitud.service.RequestServiceImpl;
 
@@ -43,9 +46,10 @@ public class ClientController {
     }
 
     @GetMapping(value = "obtener-solicitud")
-    public Stream<Request> findAllRequest(){
+    public Optional<String> findAllRequest(){
         log.info("Obtener solicitud");
-        return requestServiceImpl.find();
+        return requestServiceImpl.isCredit("document");
+        // return requestServiceImpl.find();
     }
 
     @PostMapping(value = "obtener-solicitud-cliente")
